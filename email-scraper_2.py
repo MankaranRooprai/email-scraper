@@ -9,6 +9,8 @@ from collections import deque
 import re
 
 urls = []
+emails = []
+
 # Getting the needed urls from the user
 runs = int(input("Enter the number of websites you want the emails from: "))
 for i in range(runs):
@@ -23,8 +25,16 @@ for i in range(runs):
 
     try:
         response = requests.get(urls[i])
+        print(response)
     except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError):
         continue
 
+    
     new_emails = set(re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", response.text, re.I))
-    print(new_emails)
+
+    emails.extend(new_emails)
+
+    soup = BeautifulSoup(response.text, features="lxml")
+
+    for anchor in soup.find_all("a"):
+        link = anchor.attrs["href"] if "href" in anchor.attrs else ''
