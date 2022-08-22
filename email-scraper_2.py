@@ -43,4 +43,6 @@ for i in range(runs):
         link = base_url + link
     elif not link.startswith('http'):
         link = path + link
-    emails[i]
+    
+
+    print(emails)
