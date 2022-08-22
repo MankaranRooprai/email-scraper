@@ -13,9 +13,10 @@ emails = []
 
 # Getting the needed urls from the user
 runs = int(input("Enter the number of websites you want the emails from: "))
-for i in range(runs):
-    urls.append(input("Enter the url from which you want emails: "))
-    
+urls.append(input("Enter the url from which you want emails: "))
+
+for i in range(len(urls)):
+
     parts = urlsplit(urls[i])
     print(parts)
     base_url = "{0.scheme}://{0.netloc}".format(parts)
@@ -44,5 +45,7 @@ for i in range(runs):
     elif not link.startswith('http'):
         link = path + link
     
+    if not link in urls:
+        urls.append(link) 
 
     print(emails)
