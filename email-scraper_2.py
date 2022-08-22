@@ -18,3 +18,5 @@ for i in range(runs):
     print(parts)
     base_url = "{0.scheme}://{0.netloc}".format(parts)
     print(base_url)
+    path = urls[i][:urls[i].rfind('/')+1] if '/' in parts.path else urls[i]
+    print(path)
