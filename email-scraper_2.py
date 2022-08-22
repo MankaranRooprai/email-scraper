@@ -20,3 +20,11 @@ for i in range(runs):
     print(base_url)
     path = urls[i][:urls[i].rfind('/')+1] if '/' in parts.path else urls[i]
     print(path)
+
+    try:
+        response = requests.get(urls[i])
+    except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError):
+        continue
+
+    new_emails = set(re.findall(r"[a-z0-9\.\-+_]+@[a-z0-9\.\-+_]+\.[a-z]+", response.text, re.I))
+    print(new_emails)
