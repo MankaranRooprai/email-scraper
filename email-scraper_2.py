@@ -67,21 +67,12 @@ for em in masterurls:
                     urls.append(link) 
 
             desktop_path = os.path.expanduser('~')+'\\Desktop\\emails.csv'
-            file_exists = os.path.exists(desktop_path)
-            if file_exists:
-                df_read = pd.read_csv(desktop_path)
-            else:
-                df.to_csv(desktop_path)
             print(emails)
-            for item in df_read.values.tolist():
-                if item in emails:
-                    emails.remove(item)
-                else:
-                    df_append = pd.DataFrame(emails, columns=["Email"])
-                
+
+            df = pd.DataFrame(emails, columns=["Email"])
 
             try:
-                df_append.to_csv(desktop_path, mode='a', index=False, header=False)
+                df.to_csv(desktop_path, index=False, header=False)
             except PermissionError:
                 print('Please close the csv file.')
                 break
