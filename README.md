@@ -1,6 +1,6 @@
 # Email Scraper
 
-This Python script is designed to scrape email addresses from websites. It prompts the user to input the URLs of websites from which they want to extract emails. The script then crawls the provided websites, extracting email addresses from the HTML content and storing them in a CSV file.
+This Python script is designed to scrape email addresses from websites, all in a 10-second maximum timeframe. It prompts the user to input the URLs of websites from which they want to extract emails. The script then crawls the provided websites, extracting email addresses from the HTML content and storing them in a CSV file.
 
 ## Usage
 
